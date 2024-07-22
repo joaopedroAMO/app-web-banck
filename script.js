@@ -16,6 +16,7 @@ function registrar() {
     const hasLowerCase = /[a-z]/.test(newUserPasswordInput); // Verifica letras minúsculas
     const hasNumber = /[0-9]/.test(newUserPasswordInput);
     const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(newUserPasswordInput);
+
     // Verificar se todos os campos estão preenchidos
     if (newUserEmailInput === "" || newUserNameInput === "" || newUserPasswordInput === "") {
         msg.innerHTML = "Preencha todos os campos";
@@ -79,6 +80,24 @@ function registrar() {
 }
 //fim registro
 
+//coletando a imagem apresentada pelo usuario
+document.getElementById('fileImg').addEventListener('change', function(event){
+    const file = event.target.files[0];
+    
+    if(file){
+        const reader = new FileReader();
+        reader.onload = function(e){
+            const imgSrc = e.target.result;
+            document.getElementById('imgUm').src = imgSrc;
+            document.getElementById('imgDois').src = imgSrc;
+            document.getElementById('imgTres').src = imgSrc;
+            localStorage.setItem('ImagemRegistrada', imgSrc);
+        }
+        reader.readAsDataURL(file);
+    }
+})
+//fim coletando a imagem apresentada pelo usuario
+
 //visibilidade de senha
 function passwordVisibility(passwordFieldId, openEyeId, closeEyeId) {
     const passwordInput = document.getElementById(passwordFieldId);
@@ -122,11 +141,20 @@ function login(){
 
 function checkLogin(){
     const username = localStorage.getItem('username');
+    const email = localStorage.getItem('registeredEmail');
     const registeredUsername = localStorage.getItem('registeredUsername');
+    
 
     if(username){
         document.getElementsByClassName('login-container')[0].style.display = 'block';
         document.getElementsByClassName('registro-container')[0].style.display = 'none';
+
+        const savedImg = localStorage.getItem('ImagemRegistrada');
+        if(savedImg){
+        document.getElementById('imgUm').src = savedImg;
+        document.getElementById('imgDois').src = savedImg;
+        document.getElementById('imgTres').src = savedImg;
+    }
     }else{
         // Mostrar tela de registro se não houver usuários registrados
         if(!registeredUsername){
@@ -137,6 +165,7 @@ function checkLogin(){
     }
 
     document.getElementById('userNameDisplay').innerHTML = username;
+    document.getElementById('userEmailDisplay').innerHTML = email;
     document.getElementsByClassName('msg')[1].innerHTML = "";
-    document.getElementById('User').value = registeredUsername;
+    document.getElementById('User').value = username;
 }
