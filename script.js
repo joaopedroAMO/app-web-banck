@@ -169,3 +169,12 @@ function checkLogin(){
     document.getElementsByClassName('msg')[1].innerHTML = "";
     document.getElementById('User').value = username;
 }
+
+function openPixArea(){
+    const pixContainer = document.getElementsByClassName('pix-container')[0];
+    if(pixContainer.style.display == "none"){
+        pixContainer.style.display = "block";
+    }else{
+        pixContainer.style.display = "none";
+    }
+}
