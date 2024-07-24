@@ -178,3 +178,13 @@ function openPixArea(){
         pixContainer.style.display = "none";
     }
 }
+
+function openCardArea(){
+    const cardContainer = document.getElementsByClassName('card-container')[0];
+
+    if(cardContainer.style.display == "none"){
+        cardContainer.style.display = "block";
+    }else{
+        cardContainer.style.display = "none";
+    }
+}
