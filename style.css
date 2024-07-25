@@ -406,6 +406,7 @@ hr{
 }
 /*fim pix contaienr*/
 
+/*card container*/
 .card-container{
     display: none;
     position: fixed;
@@ -451,3 +452,30 @@ hr{
     font-size: small;
     margin-top: 10px;
 }
+/*fim card container*/
+
+/*perfil container*/
+.perfil-container{
+    display: none;
+    padding: 30px;
+    background-color: #fff;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.infos-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    gap:20px;
+}
+
+.logout{
+    color: red;
+}
+/*fim perfil container*/

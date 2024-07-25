@@ -91,6 +91,7 @@ document.getElementById('fileImg').addEventListener('change', function(event){
             document.getElementById('imgUm').src = imgSrc;
             document.getElementById('imgDois').src = imgSrc;
             document.getElementById('imgTres').src = imgSrc;
+            document.getElementById('imgQuatro').src = imgSrc;
             localStorage.setItem('ImagemRegistrada', imgSrc);
         }
         reader.readAsDataURL(file);
@@ -127,6 +128,7 @@ function login(){
     // Verifique as credenciais
     if (userName === registeredUsername && userPassword === registeredPassword) {
         localStorage.setItem('username', userName);
+        const perfilUserName = document.getElementById('perfilUserName').innerHTML = userName;
 
         // Esconder login e mostrar tela principal
         document.getElementsByClassName('login-container')[0].style.display = 'none';
@@ -154,6 +156,7 @@ function checkLogin(){
         document.getElementById('imgUm').src = savedImg;
         document.getElementById('imgDois').src = savedImg;
         document.getElementById('imgTres').src = savedImg;
+        document.getElementById('imgQuatro').src = savedImg;
     }
     }else{
         // Mostrar tela de registro se não houver usuários registrados
@@ -164,7 +167,7 @@ function checkLogin(){
         document.getElementsByClassName('conteudo-container')[0].style.display = 'none';
     }
 
-    document.getElementById('userNameDisplay').innerHTML = username;
+    document.getElementById('userNameDisplay').innerHTML = registeredUsername;
     document.getElementById('userEmailDisplay').innerHTML = email;
     document.getElementsByClassName('msg')[1].innerHTML = "";
     document.getElementById('User').value = username;
@@ -187,4 +190,32 @@ function openCardArea(){
     }else{
         cardContainer.style.display = "none";
     }
+}
+
+function openPerfil(){
+    const perfil = document.getElementsByClassName('perfil-container')[0];
+    if(perfil.style.display == "none"){
+        perfil.style.display = "block";
+    }else{
+        perfil.style.display = "none";
+    }
+}
+
+function logout(){
+    const conteudo = document.getElementsByClassName('conteudo-container')[0].style.display = "none";
+    const login = document.getElementsByClassName('login-container')[0].style.display = "none";
+    const registro = document.getElementsByClassName('registro-container')[0].style.display = "flex";
+    document.getElementsByClassName('perfil-container')[0].style.display = "none";
+
+    document.getElementById('imgUm').src = "";
+    document.getElementById('imgDois').src = "";
+    document.getElementById('imgTres').src = "";
+    document.getElementById('imgQuatro').src = "";
+
+    document.getElementById('User').value = "";
+    document.getElementById('Password').value = "";
+
+    document.getElementById('newUser').value = "";
+    document.getElementById('newPassword').value = "";
+    document.getElementById('newEmail').value = "";
 }
