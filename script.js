@@ -65,7 +65,7 @@ function registrar() {
 
     // Mostrar tela de login
     document.getElementsByClassName('registro-container')[0].style.display = 'none';
-    document.getElementsByClassName('login-container')[0].style.display = 'block';
+    document.getElementsByClassName('login-container')[0].style.display = 'flex';
 
     const userNameDisplay = document.getElementById('userNameDisplay');
     const userEmailDisplay = document.getElementById('userEmailDisplay');
@@ -75,7 +75,7 @@ function registrar() {
 
     // Ocultar container de registro
     document.getElementsByClassName('registro-container')[0].style.display = "none";
-    document.getElementsByClassName('login-container')[0].style.display = "block";
+    document.getElementsByClassName('login-container')[0].style.display = "flex";
 
 }
 //fim registro
@@ -146,7 +146,7 @@ function checkLogin(){
     
 
     if(username){
-        document.getElementsByClassName('login-container')[0].style.display = 'block';
+        document.getElementsByClassName('login-container')[0].style.display = 'flex';
         document.getElementsByClassName('registro-container')[0].style.display = 'none';
 
         const savedImg = localStorage.getItem('ImagemRegistrada');
@@ -158,7 +158,7 @@ function checkLogin(){
     }else{
         // Mostrar tela de registro se não houver usuários registrados
         if(!registeredUsername){
-            document.getElementsByClassName('registro-container')[0].style.display = 'block';
+            document.getElementsByClassName('registro-container')[0].style.display = 'flex';
             document.getElementsByClassName('msg')[0].innerHTML = "";
         }
         document.getElementsByClassName('conteudo-container')[0].style.display = 'none';
